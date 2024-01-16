@@ -1,0 +1,24 @@
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.check {
+  background-color: #EEE;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 24px;
+  margin-left: 2rem;
+  margin-right: 1rem;
+  width: 24px;
+}
+
+.check:hover {
+  background-color: #DDD;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.completed .check {
+  background-color: #27ae60;
+}

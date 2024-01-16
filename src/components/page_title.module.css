@@ -1,0 +1,9 @@
+.button_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.button_wrapper button {
+  margin-left: 1rem;
+}

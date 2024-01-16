@@ -1,95 +1,99 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import React from 'react'
+
+import Menu from '../components/menu'
+import PageTitle from '../components/page_title'
+import Project from '../components/project'
 
 export default function Home() {
+  const projects = [
+    {
+      id: "1",
+      name: "Project 1",
+      milestones: [
+        {
+          id: "1",
+          name: "Milestone 1",
+          color: "#782732",
+          tasks: [
+            {
+              id: "1",
+              title: "Task 1",
+              completed: true,
+            },
+            {
+              id: "2",
+              title: "Task 2",
+              completed: true,
+            },
+            {
+              id: "3",
+              title: "Task 3",
+              completed: false,
+            }
+          ]
+        },
+        {
+          id: "2",
+          name: "Milestone 2",
+          tasks: [
+            {
+              id: "4",
+              title: "Task 4",
+              completed: false,
+            },
+            {
+              id: "5",
+              title: "Task 5",
+              completed: false,
+            },
+            {
+              id: "6",
+              title: "Task 6",
+              completed: false,
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "2",
+      name: "Project 2",
+      milestones: [
+        {
+          id: "33",
+          name: "Milestone 3",
+          tasks: [
+            {
+              id: "11",
+              title: "Task 11",
+              completed: false,
+            },
+          ]
+        }
+      ]
+    },
+    {
+      id: "3",
+      name: "Project 3",
+      milestones: []
+    }
+  ]
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <>
+      <Menu
+        user="Karen"
+      />
+      <PageTitle
+        title="Home"
+        actionTitle="New Project"
+      />
+      {projects.map((project) => (
+        <Project
+          key={project.id}
+          project={project}
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      ))}
+    </>
   )
 }

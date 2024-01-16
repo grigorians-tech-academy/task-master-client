@@ -1,0 +1,23 @@
+.project_title_wrapper {
+  background-color: #EEE;
+
+  background: linear-gradient(to bottom, #E6F2FF, #FFFFFF);
+  
+  border-radius: 10px;
+}
+
+.project_title {
+  color: #3742fa;
+  display: inline-block;
+  padding: 10px 0;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.project_title h2 {
+  margin: 0;
+}
+
+.project_title:hover {
+  color: #2c33b8;
+}
