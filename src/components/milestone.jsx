@@ -1,16 +1,23 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Col, Container, Row } from 'react-bootstrap'
 
 import Task from './task.jsx'
+import AddTaskModal from '../modals/add_task'
 
 import styles from './milestone.module.css'
 
 const Milestone = (props) => {
   const { milestone } = props
-  const { name, color, tasks } = milestone
+  const { id, name, color, tasks } = milestone
+
+  const [showTaskForm, setShowTaskForm] = useState(false)
+
+  const addTask = () => {
+    console.log('show task form')
+  }
 
   return (
     <>
@@ -25,6 +32,10 @@ const Milestone = (props) => {
               { name }
             </h4>
           </Col>
+          <Col xs={12} className={styles.actions}>
+            <div onClick={() => setShowTaskForm(true)}>[ Add task ]</div>
+            <div>[ Delete milestone ]</div>
+          </Col>
         </Row>
       </Container>
       {tasks && tasks.map((task) => (
@@ -33,6 +44,11 @@ const Milestone = (props) => {
           task={task}
         />
       ))}
+      <AddTaskModal
+        visible={showTaskForm}
+        setVisible={() => setShowTaskForm(false)}
+        milestoneID={milestone}
+      />
     </>
   )
 }

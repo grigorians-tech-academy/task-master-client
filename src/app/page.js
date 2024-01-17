@@ -1,10 +1,17 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
+
+import { ToastContainer } from 'react-toastify'
 
 import Menu from '../components/menu'
 import PageTitle from '../components/page_title'
 import Project from '../components/project'
+import AddProjectModal from '../modals/add_project'
 
 export default function Home() {
+  const [showAddProjectModal, setShowAddProjectModal] = useState(false)
+
   const projects = [
     {
       id: "1",
@@ -81,12 +88,11 @@ export default function Home() {
 
   return (
     <>
-      <Menu
-        user="Karen"
-      />
+      <Menu />
       <PageTitle
         title="Home"
         actionTitle="New Project"
+        action={() => setShowAddProjectModal(true)}
       />
       {projects.map((project) => (
         <Project
@@ -94,6 +100,11 @@ export default function Home() {
           project={project}
         />
       ))}
+      <ToastContainer />
+      <AddProjectModal
+        visible={showAddProjectModal}
+        setVisible={setShowAddProjectModal}
+      />
     </>
   )
 }

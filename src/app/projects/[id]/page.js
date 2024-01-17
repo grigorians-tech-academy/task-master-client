@@ -1,15 +1,18 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'next/navigation'
 
 import Menu from '../../../components/menu'
 import PageTitle from '../../../components/page_title'
 import Milestone from '../../../components/milestone'
 import Message from '../../../components/message'
+import AddMilestoneModal from '../../../modals/add_milestone'
 
 export default function ProjectPage() {
   const { id } = useParams()
+  const [showAddMilestoneModal, setShowAddMilestoneModal] = useState(false)
+  
   const user = undefined
 
   const project = {
@@ -69,6 +72,7 @@ export default function ProjectPage() {
         title={project.name}
         actionTitle="New milestone"
         deleteActionTitle="Delete project"
+        action={() => setShowAddMilestoneModal(true)}
       />
       {!user && (
         <Message
@@ -81,6 +85,11 @@ export default function ProjectPage() {
           milestone={milestone}
         />
       ))}
+      <AddMilestoneModal
+        visible={showAddMilestoneModal}
+        setVisible={setShowAddMilestoneModal}
+        projectID={id}
+      />
     </>
   )
 }

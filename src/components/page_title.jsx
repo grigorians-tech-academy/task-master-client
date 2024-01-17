@@ -7,7 +7,13 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import styles from './page_title.module.css'
 
 const PageTitle = (props) => {
-  const { title, actionTitle, deleteActionTitle } = props
+  const {
+    title,
+    actionTitle,
+    deleteActionTitle,
+    action,
+    deleteAction
+  } = props
 
   return (
     <Container className="mt-5">
@@ -19,7 +25,7 @@ const PageTitle = (props) => {
         </Col>
         <Col className={styles.button_wrapper}>
           {actionTitle && (
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="sm" onClick={action}>
               { actionTitle }
             </Button>
           )}
